@@ -1,5 +1,4 @@
 import os
-
 from flask import Flask, request, render_template, redirect, url_for
 import requests
 
@@ -21,9 +20,14 @@ def proxy():
     if target_url is None:
         return "Veuillez fournir une URL en tant que paramètre 'url'. Exemple : /proxy?url=https://example.com"
     
-    response = requests.get(target_url)
-    
-    return response.text
+    try:
+        # Envoie une requête GET avec suivi des redirections et gestion des erreurs SSL
+        response = requests.get(target_url, allow_redirects=True, verify=True)
+        return response.text
+    except requests.exceptions.SSLError:
+        return "Erreur SSL: Impossible de vérifier la connexion sécurisée."
+    except requests.exceptions.RequestException as e:
+        return f"Une erreur est survenue : {str(e)}"
 
 if __name__ == '__main__':
     # Utilisation de la variable d'environnement PORT, ou 5000 par défaut si non définie
