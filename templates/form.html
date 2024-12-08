@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy</title>
+    <style>
+        /* CSS global */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Conteneur principal */
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Titre */
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Formulaire */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Message d'erreur */
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Entrez l'URL que vous voulez visiter :</h1>
+        <form action="/" method="POST">
+            <label for="url">URL:</label>
+            <input type="text" id="url" name="url" required placeholder="Entrez une URL (par exemple, https://example.com)">
+            <button type="submit">Go</button>
+        </form>
+    </div>
+</body>
+</html>
