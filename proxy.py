@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, render_template, redirect, url_for
 import requests
 
@@ -9,7 +11,7 @@ def home():
     if request.method == 'POST':
         target_url = request.form['url']
         return redirect(url_for('proxy', url=target_url))
-    return render_template('form.html')  # Utilisation de render_template pour charger form.html depuis le dossier templates
+    return render_template('form.html')
 
 # Proxy qui prend l'URL et fait la requête HTTP
 @app.route('/proxy', methods=['GET'])
@@ -24,4 +26,6 @@ def proxy():
     return response.text
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Utilisation de la variable d'environnement PORT, ou 5000 par défaut si non définie
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
